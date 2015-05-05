@@ -9,15 +9,17 @@ public class Score {
 	}
 
 	public int total() {
-		int sum = 0;
+		int grandTotal = 0;
 		for (int frame = 0; frame < framesScores.length; frame++) {
-			sum += totalForFrame(frame);
+			grandTotal += totalForFrame(frame);
 		}
-		return sum;
+		return grandTotal;
 	}
 	
 	private int totalForFrame(int frame) {
-		return firstTryPunctuation(frame) + secondTryPunctuation(frame);
+		int totalForFrame = firstTryPunctuation(frame) + secondTryPunctuation(frame);
+		if (totalForFrame == 10) totalForFrame += totalForFrame(frame + 1);
+		return totalForFrame;
 	}
 
 	private Integer secondTryPunctuation(int frame) {
