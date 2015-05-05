@@ -18,4 +18,10 @@ public class ScoreTest {
 		String frames = "1 1 1 1 1 1 1 1 1 1";
 		assertThat(new Score(frames).total(), is(10));
 	}
+	
+	@Test
+	public void should_count_a_spare() {
+		String frames = "55 5 0 0 0 0 0 0 0 0";
+		assertThat(new Score(frames).total(), is(15));
+	}
 }
