@@ -22,6 +22,6 @@ public class ScoreTest {
 	@Test
 	public void should_count_a_spare() {
 		String frames = "55 50 00 00 00 00 00 00 00 00";
-		assertThat(new Score(frames).total(), is(15));
+		assertThat(new Score(frames).total(), is(20));
 	}
 }
