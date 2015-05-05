@@ -14,8 +14,8 @@ public class ScoreTest {
 	}
 	
 	@Test
-	public void should_be_a_flat_sum_of_frames_when_no_spare_or_strike() {
-		String frames = "01 01 01 01 01 01 01 01 01 01";
+	public void should_be_ten_when_all_frames_are_one() {
+		String frames = "01 01 01 01 01 10 10 10 10 10";
 		assertThat(new Score(frames).total(), is(10));
 	}
 	

@@ -22,11 +22,15 @@ public class Score {
 		return totalForFrame;
 	}
 
-	private Integer secondTryPunctuation(int frame) {
-		return new Integer(framesScores[frame].substring(1, 2));
+	private Integer firstTryPunctuation(int frame) {
+		return new Integer(tryPunctuation(frame, 0));
 	}
 
-	private Integer firstTryPunctuation(int tryIndex) {
-		return new Integer(framesScores[tryIndex].substring(0, 1));
+	private Integer secondTryPunctuation(int frame) {
+		return new Integer(tryPunctuation(frame, 1));
+	}
+
+	private String tryPunctuation(int frame, int tryNumber) {
+		return framesScores[frame].substring(tryNumber, tryNumber + 1).replace("X", "10");
 	}
 }
