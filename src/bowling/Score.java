@@ -17,9 +17,14 @@ public class Score {
 	}
 	
 	private int totalForFrame(int frame) {
+		if (exceedingFrameNumbers(frame)) return 0;
 		int totalForFrame = firstTryPunctuation(frame) + secondTryPunctuation(frame);
-		if (totalForFrame == 10) totalForFrame += totalForFrame(frame + 1);
+		if (totalForFrame >= 10) totalForFrame += totalForFrame(frame + 1);
 		return totalForFrame;
+	}
+
+	private boolean exceedingFrameNumbers(int frame) {
+		return frame == framesScores.length;
 	}
 
 	private Integer firstTryPunctuation(int frame) {
