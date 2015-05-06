@@ -36,4 +36,10 @@ public class ScoreTest {
 		String frames = "00 00 00 00 00 00 00 00 00 64 10";
 		assertThat(new Score(frames).total(), is(12));
 	}
+	
+	@Test
+	public void all_throws_as_strike_gives_max_punctuation() {
+		String frames = "XX XX XX XX XX XX XX XX XX XX XX XX";
+		assertThat(new Score(frames).total(), is(300));
+	}
 }
