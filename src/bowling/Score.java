@@ -23,14 +23,14 @@ public class Score {
 	}
 
 	private Integer firstTryPunctuation(int frame) {
-		return new Integer(tryPunctuation(frame, 0));
+		return new Integer(throwPunctuation(frame, 0));
 	}
 
 	private Integer secondTryPunctuation(int frame) {
-		return new Integer(tryPunctuation(frame, 1));
+		return new Integer(throwPunctuation(frame, 1));
 	}
 
-	private String tryPunctuation(int frame, int tryNumber) {
-		return framesScores[frame].substring(tryNumber, tryNumber + 1).replace("X", "10");
+	private String throwPunctuation(int frame, int throwNumber) {
+		return framesScores[frame].substring(throwNumber, throwNumber + 1).replace("X", "10");
 	}
 }

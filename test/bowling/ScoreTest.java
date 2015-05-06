@@ -30,4 +30,10 @@ public class ScoreTest {
 		String frames = "XX 50 00 00 00 00 00 00 00 00";
 		assertThat(new Score(frames).total(), is(25));
 	}
+	
+	@Test
+	public void spare_in_last_turn_gives_another_throw() {
+		String frames = "00 00 00 00 00 00 00 00 00 64 10";
+		assertThat(new Score(frames).total(), is(12));
+	}
 }
