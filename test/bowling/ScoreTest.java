@@ -28,7 +28,7 @@ public class ScoreTest {
 	@Test
 	public void should_count_a_strike() {
 		String frames = "XX 50 00 00 00 00 00 00 00 00";
-		assertThat(new Score(frames).total(), is(25));
+		assertThat(new Score(frames).total(), is(30));
 	}
 	
 	@Test
