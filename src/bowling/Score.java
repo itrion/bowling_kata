@@ -29,7 +29,7 @@ public class Score {
 
 	private int flatTotal(int frame) {
 		if (isStrike(frame) || isSpare(frame)) return FLAT_TOTAL_WHEN_STRIKE_OR_SPARE;
-		return firstThrow(frame) + secondThrow(frame);
+		return firstRoll(frame) + secondRoll(frame);
 	}
 
 	private boolean isStrike(int frame) {
@@ -37,18 +37,18 @@ public class Score {
 	}
 
 	private boolean isSpare(int frame) {
-		return firstThrow(frame) + secondThrow(frame) == 10;
+		return firstRoll(frame) + secondRoll(frame) == 10;
 	}
 
-	private Integer firstThrow(int frame) {
-		return new Integer(throwPunctuation(frame, 0));
+	private Integer firstRoll(int frame) {
+		return new Integer(rollPunctuation(frame, 0));
 	}
 	
-	private Integer secondThrow(int frame) {
-		return new Integer(throwPunctuation(frame, 1));
+	private Integer secondRoll(int frame) {
+		return new Integer(rollPunctuation(frame, 1));
 	}
 	
-	private String throwPunctuation(int frame, int throwNumber) {
+	private String rollPunctuation(int frame, int throwNumber) {
 		return framesScores[frame].substring(throwNumber, throwNumber + 1);
 	}
 }

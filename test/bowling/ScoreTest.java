@@ -38,7 +38,7 @@ public class ScoreTest {
 	}
 	
 	@Test
-	public void all_throws_as_strike_gives_max_punctuation() {
+	public void all_rolls_as_strike_gives_max_punctuation() {
 		String frames = "X X X X X X X X X X X";
 		assertThat(new Score(frames).total(), is(300));
 	}
