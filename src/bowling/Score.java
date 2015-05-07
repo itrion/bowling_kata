@@ -7,35 +7,40 @@ public class Score {
 	public Score(String frames) {
 		this.framesScores = frames.split(" ");
 	}
-
+	
 	public int total() {
 		int grandTotal = 0;
-		for (int frame = 0; frame < framesScores.length; frame++) {
+		for (int frame = 0; frame < 10; frame++) {
 			grandTotal += totalForFrame(frame);
 		}
 		return grandTotal;
 	}
 	
 	private int totalForFrame(int frame) {
-		if (exceedingFrameNumbers(frame)) return 0;
-		int totalForFrame = firstTryPunctuation(frame) + secondTryPunctuation(frame);
-		if (totalForFrame >= 10) totalForFrame += totalForFrame(frame + 1);
+		if (isStrike(frame)) return 20 + baseTotalForFrame(frame + 1);
+		int totalForFrame = firstThrow(frame) + secondThrow(frame);
+		if (totalForFrame == 10) totalForFrame += baseTotalForFrame(frame + 1);
 		return totalForFrame;
 	}
-
-	private boolean exceedingFrameNumbers(int frame) {
-		return frame == framesScores.length;
+	
+	private int baseTotalForFrame(int frame) {
+		if (isStrike(frame)) return 10;
+		return firstThrow(frame) + secondThrow(frame);
 	}
 
-	private Integer firstTryPunctuation(int frame) {
+	private boolean isStrike(int frame) {
+		return framesScores[frame].equals("X");
+	}
+
+	private Integer firstThrow(int frame) {
 		return new Integer(throwPunctuation(frame, 0));
 	}
-
-	private Integer secondTryPunctuation(int frame) {
+	
+	private Integer secondThrow(int frame) {
 		return new Integer(throwPunctuation(frame, 1));
 	}
-
+	
 	private String throwPunctuation(int frame, int throwNumber) {
-		return framesScores[frame].substring(throwNumber, throwNumber + 1).replace("X", "10");
+		return framesScores[frame].substring(throwNumber, throwNumber + 1);
 	}
 }

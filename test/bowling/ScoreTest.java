@@ -27,19 +27,19 @@ public class ScoreTest {
 	
 	@Test
 	public void should_count_a_strike() {
-		String frames = "XX 50 00 00 00 00 00 00 00 00";
+		String frames = "X 50 00 00 00 00 00 00 00 00";
 		assertThat(new Score(frames).total(), is(30));
 	}
 	
 	@Test
 	public void spare_in_last_turn_gives_another_throw() {
 		String frames = "00 00 00 00 00 00 00 00 00 64 10";
-		assertThat(new Score(frames).total(), is(12));
+		assertThat(new Score(frames).total(), is(11));
 	}
 	
 	@Test
 	public void all_throws_as_strike_gives_max_punctuation() {
-		String frames = "XX XX XX XX XX XX XX XX XX XX XX XX";
+		String frames = "X X X X X X X X X X X";
 		assertThat(new Score(frames).total(), is(300));
 	}
 }
