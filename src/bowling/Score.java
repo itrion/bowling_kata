@@ -6,7 +6,6 @@ public class Score {
 	private static final int STRIKE_POINTS = 20;
 	private static final int SPARE_POINTS = 10;
 	private static final int FIRST_FRAME = 0;
-	private static final int FLAT_TOTAL_WHEN_STRIKE_OR_SPARE = 10;
 	private final String[] framesScores;
 	
 	public Score(String frames) {
@@ -22,13 +21,8 @@ public class Score {
 	}
 	
 	private int total(int frame) {
-		if (isStrike(frame)) return STRIKE_POINTS + flatTotal(frame + 1);
-		if (isSpare(frame)) return SPARE_POINTS + flatTotal(frame + 1);
-		return flatTotal(frame);
-	}
-
-	private int flatTotal(int frame) {
-		if (isStrike(frame) || isSpare(frame)) return FLAT_TOTAL_WHEN_STRIKE_OR_SPARE;
+		if (isStrike(frame)) return STRIKE_POINTS + firstRoll(frame + 1);
+		if (isSpare(frame)) return SPARE_POINTS + firstRoll(frame + 1);
 		return firstRoll(frame) + secondRoll(frame);
 	}
 
@@ -49,6 +43,6 @@ public class Score {
 	}
 	
 	private String rollPunctuation(int frame, int throwNumber) {
-		return framesScores[frame].substring(throwNumber, throwNumber + 1);
+		return framesScores[frame].substring(throwNumber, throwNumber + 1).replace("X", "10");
 	}
 }
