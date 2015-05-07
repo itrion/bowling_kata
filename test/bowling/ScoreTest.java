@@ -42,4 +42,10 @@ public class ScoreTest {
 		String frames = "X X X X X X X X X X X";
 		assertThat(new Score(frames).total(), is(300));
 	}
+	
+	@Test
+	public void all_rolls_as_spare_gives_a_half_of_max_punctuation() {
+		String frames = "55 55 55 55 55 55 55 55 55 55 55";
+		assertThat(new Score(frames).total(), is(150));
+	}
 }
